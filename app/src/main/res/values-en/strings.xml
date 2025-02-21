@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Cheems</string>
+    <string name="text_restart">Restart</string>
+    <string name="text_game_over">¡Game over! Try again</string>
+</resources>
