@@ -51,14 +51,14 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     fun start() {
         selectedCards.clear() // Limpiar la lista de cartas seleccionadas al iniciar el juego
-        for (i in 1..12) { // Cambiar de 6 a 12
+        for (i in 1..12) { // 12 cartas totales
             val btnCard = findViewById<View>(
                 resources.getIdentifier("card$i", "id", this.packageName)
             ) as ImageButton
             btnCard.setOnClickListener(this)
             btnCard.setBackgroundResource(R.drawable.icon_pregunta)
         }
-        gameOverCard = (1..12).random() // Cambiar de 6 a 12
+        gameOverCard = (1..12).random()
 
         Log.d("El valor de la carta", "La carta perdedora es ${gameOverCard.toString()}")
     }
