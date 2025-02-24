@@ -18,6 +18,7 @@ import androidx.core.view.WindowInsetsCompat
 class MainActivity : AppCompatActivity(), View.OnClickListener {
 
     var gameOverCard = 0
+    val selectedCards = mutableListOf<Int>() // Lista para rastrear las cartas seleccionadas correctamente
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
     }
 
     fun start() {
+        selectedCards.clear() // Limpiar la lista de cartas seleccionadas al iniciar el juego
         for(i in 1..6){
             val btnCard = findViewById<View>(
                 resources.getIdentifier("card$i", "id", this.packageName)
@@ -72,11 +74,19 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
                 }
             }
         } else {
-            //Comtinúa en el juego
+            // Continúa en el juego
             val btnCard = findViewById<View>(
                 resources.getIdentifier("card$card", "id", this.packageName)
             ) as ImageButton
             btnCard.setBackgroundResource(R.drawable.icon_cheems)
+            selectedCards.add(card) // Añadir la carta seleccionada a la lista
+
+            // Verificar si el usuario ha seleccionado todas las cartas seguras
+            if (selectedCards.size == 5) {
+                Toast.makeText(this, getString(R.string.text_you_win), Toast.LENGTH_LONG).show()
+
+                start() // Reiniciar el juego después de ganar
+            }
         }
     }
 
@@ -88,8 +98,6 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
             R.id.card4 -> { flip(4)}
             R.id.card5 -> { flip(5)}
             R.id.card6 -> { flip(6)}
-            
-
         }
     }
 }
