@@ -1,6 +1,8 @@
 <resources>
     <string name="app_name">Cheems</string>
+    <string name="welcome_message">¡Bienvenido al juego!</string>
     <string name="text_restart">Reiniciar</string>
+    <string name="text_surrender">Rendirse</string>
     <string name="text_game_over">¡Perdiste! Intenta otra vez</string>
     <string name="text_you_win">¡Ganaste! Intenta otra vez</string>
 </resources>
